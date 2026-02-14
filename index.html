@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danyathra S - AI & Data Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff88;
+            --secondary: #ff0055;
+            --accent: #00ddff;
+            --dark: #0a0e27;
+            --darker: #050714;
+            --light: #ffffff;
+            --gray: #a8b2d1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(5, 7, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: var(--light);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 8rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 .name {
+            display: block;
+            color: var(--light);
+        }
+
+        .hero h1 .title {
+            display: block;
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--darker);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--darker);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .skills-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 221, 255, 0.1);
+            border: 1px solid rgba(0, 221, 255, 0.3);
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .project-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(0, 255, 136, 0.2);
+            float: right;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            clear: both;
+        }
+
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(255, 0, 85, 0.1);
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            color: var(--secondary);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .github-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Achievements */
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .achievement-type {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .achievement-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-company {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--darker);
+        }
+
+        .timeline-type {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            padding: 1rem;
+            border-left: 3px solid transparent;
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        .education-card {
+            margin-bottom: 2rem;
+        }
+
+        .education-card h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .education-card p {
+            color: var(--gray);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">DS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div>
+            <h1>
+                <span class="name">DANYATHRA S</span>
+                <span class="title">AI & Data Science</span>
+            </h1>
+            <p class="hero-subtitle">
+                Third-year AI & Data Science undergraduate with a passion for data analytics and AI-based problem solving. Focused on building data-driven solutions that support better decisions across different domains.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="section-label">// ABOUT ME</div>
+        <h2 class="section-title">Turning Data Into Intelligence</h2>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I am a third-year Artificial Intelligence and Data Science undergraduate with a growing interest in data analytics and AI-based problem solving. My academic journey has helped me build a strong foundation in understanding data, identifying patterns, and applying analytical thinking to real-world scenarios.
+                </p>
+                <p>
+                    Through coursework, academic projects, and internships, I have gained exposure to data analysis and machine learning concepts, which has strengthened my interest in working with data-driven solutions. I enjoy learning how data can be used to support better decisions across different domains.
+                </p>
+                <p>
+                    As a student, I am focused on continuous learning and skill development. I am open to guidance, collaboration, and hands-on opportunities that allow me to gain practical experience and grow professionally while completing my undergraduate studies.
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-number">7.96</span>
+                        <span class="stat-label">CGPA</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Major Projects</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Internships</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3>Technical Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Microsoft Power BI</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Microsoft Excel</span>
+                    <span class="skill-tag">Weka</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">Artificial Intelligence</span>
+                </div>
+
+                <h3>Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Problem-Solving</span>
+                    <span class="skill-tag">Team Coordination</span>
+                    <span class="skill-tag">Adaptability</span>
+                    <span class="skill-tag">Time Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="section-label">// FEATURED WORK</div>
+        <h2 class="section-title">Projects That Make Impact</h2>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <h3 class="project-title">Paddy-cum-Fish Culture Deep Learning Model</h3>
+                <p class="project-description">
+                    Developed a sophisticated deep learning model to monitor Rohu fish health and predict optimal harvesting time using image recognition and sensor data analysis.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Deep Learning</span>
+                    <span class="tech-badge">Computer Vision</span>
+                    <span class="tech-badge">IoT Sensors</span>
+                    <span class="tech-badge">Python</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <h3 class="project-title">Redora - Blood Bank Management System</h3>
+                <p class="project-description">
+                    Designed an AI-driven system to automate blood inventory monitoring and management, significantly improving operational efficiency and ensuring timely availability.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">AI/ML</span>
+                    <span class="tech-badge">Database Management</span>
+                    <span class="tech-badge">Automation</span>
+                    <span class="tech-badge">Healthcare Tech</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <h3 class="project-title">Flood Forecasting & Resilient Farming</h3>
+                <p class="project-description">
+                    Developed a machine learning-based system focused on flood forecasting to support resilient farming practices. Analyzes historical weather and rainfall data to predict flood risks and help farmers make informed decisions.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-badge">Machine Learning</span>
+                    <span class="tech-badge">Predictive Analytics</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">Agriculture Tech</span>
+                </div>
+                <a href="https://github.com/DANYATHRA/Flood-Forecasting-And-Resilient-Farming" target="_blank" class="github-link">
+                    <span>🔗</span> View on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements">
+        <div class="section-label">// ACHIEVEMENTS</div>
+        <h2 class="section-title">Highlights & Recognition</h2>
+        
+        <div class="achievement-card">
+            <div class="achievement-type">HACKATHON</div>
+            <h3 class="achievement-title">Intel GenAI Hackathon</h3>
+            <div class="achievement-company">KPR Institute of Engineering and Technology</div>
+            <div class="achievement-date">2024</div>
+            <p class="achievement-description">
+                Participated in the Intel GenAI Hackathon, collaborating with fellow innovators and diving deep into AI-driven solutions, especially in the health sector. The experience pushed the boundaries of creativity and problem-solving.
+            </p>
+        </div>
+
+        <div class="achievement-card">
+            <div class="achievement-type">PROFESSIONAL NETWORK</div>
+            <h3 class="achievement-title">Active LinkedIn Engagement</h3>
+            <div class="achievement-company">168 Connections | 73 Post Impressions</div>
+            <p class="achievement-description">
+                Building a strong professional network and sharing insights on data analytics, AI/ML, and continuous learning in the tech community.
+            </p>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience">
+        <div class="section-label">// PROFESSIONAL JOURNEY</div>
+        <h2 class="section-title">Experience & Certifications</h2>
+        
+        <div class="experience-timeline">
+            <div class="timeline-item">
+                <div class="timeline-type">CURRENT ROLE</div>
+                <h3 class="timeline-title">Innovation Engineer Trainee</h3>
+                <div class="timeline-company">Forge Innovation & Ventures</div>
+                <div class="timeline-date">January 2026 - Present</div>
+                <p class="timeline-description">
+                    Currently working as an Innovation Engineer Trainee, gaining hands-on experience in innovative technology solutions and engineering practices.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-type">INTERNSHIP</div>
+                <h3 class="timeline-title">Data Analyst</h3>
+                <div class="timeline-company">Rodeo Digital Private Limited</div>
+                <div class="timeline-date">April 2025 - May 2025</div>
+                <p class="timeline-description">
+                    Worked on data cleaning, analysis, and visualization of real-world datasets. Gained hands-on exposure to AI and machine learning techniques while deriving meaningful insights. Prepared reports and presented findings to support data-driven decision making.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-type">INTERNSHIP</div>
+                <h3 class="timeline-title">Google AI-ML Virtual Internship</h3>
+                <div class="timeline-company">AICTE</div>
+                <p class="timeline-description">
+                    Completed intensive training in artificial intelligence and machine learning fundamentals, working on hands-on projects and real-world applications.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-type">CERTIFICATION</div>
+                <h3 class="timeline-title">Data Analytics Job Simulation</h3>
+                <div class="timeline-company">Deloitte Australia (via Forage)</div>
+                <div class="timeline-date">February 2026</div>
+                <p class="timeline-description">
+                    Completed hands-on data analysis and forensic technology tasks, created interactive dashboards using Tableau, and used Excel to classify data and derive business insights.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-type">CERTIFICATION</div>
+                <h3 class="timeline-title">Introduction to Networking for Cyber Professionals</h3>
+                <div class="timeline-company">Cisco</div>
+                <p class="timeline-description">
+                    Gained foundational knowledge in networking principles and cybersecurity essentials.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-type">CERTIFICATION</div>
+                <h3 class="timeline-title">Data Mining and Predictive Analytics</h3>
+                <div class="timeline-company">LinkedIn Learning</div>
+                <p class="timeline-description">
+                    Mastered advanced techniques in data mining and predictive modeling.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-type">CERTIFICATION</div>
+                <h3 class="timeline-title">Data Visualization</h3>
+                <div class="timeline-company">Coursera</div>
+                <p class="timeline-description">
+                    Developed expertise in creating compelling data visualizations and dashboards.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="section-label">// GET IN TOUCH</div>
+        <h2 class="section-title">Let's Build Something Amazing</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Ready to collaborate?</h3>
+                <div class="contact-links">
+                    <a href="mailto:danyathra1507@gmail.com" class="contact-link">
+                        <span class="contact-icon">📧</span>
+                        danyathra1507@gmail.com
+                    </a>
+                    <a href="tel:+919487581797" class="contact-link">
+                        <span class="contact-icon">📱</span>
+                        +91 9487581797
+                    </a>
+                    <a href="https://linkedin.com/in/danyathra-s-233310296/" target="_blank" class="contact-link">
+                        <span class="contact-icon">💼</span>
+                        LinkedIn Profile
+                    </a>
+                    <a href="https://github.com/DANYATHRA" target="_blank" class="contact-link">
+                        <span class="contact-icon">💻</span>
+                        GitHub Profile
+                    </a>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="Resume.pdf" class="btn btn-primary" download>Download Resume</a>
+                </div>
+            </div>
+
+            <div>
+                <div class="education-card">
+                    <h4>Education</h4>
+                    <p><strong>B.Tech in Artificial Intelligence and Data Science</strong></p>
+                    <p>Kumaraguru College of Technology</p>
+                    <p>2023 - 2027 | CGPA: 7.96</p>
+                </div>
+
+                <div class="education-card">
+                    <h4>Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English</span>
+                        <span class="skill-tag">Tamil</span>
+                        <span class="skill-tag">Telugu</span>
+                        <span class="skill-tag">Hindi</span>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h4>Location</h4>
+                    <p>Coimbatore, Tamil Nadu, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Danyathra S. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">AI & Data Science Portfolio</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
